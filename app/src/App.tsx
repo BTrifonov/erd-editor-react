@@ -1,14 +1,11 @@
-import './App.css'
-import DrawPlane from './components/DrawPlane'
-
-
-import '@svgdotjs/svg.draggable.js';
+import './App.css';
+import DrawPlane from './components/DrawPlane';
 
 
 function App() {
   return (
     <div id='outer-container'>
-     <DrawPlane />
+     <DrawPlane/>
     </div>
   )
 }
