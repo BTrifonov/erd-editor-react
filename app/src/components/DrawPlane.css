@@ -1,5 +1,27 @@
-#draw-plane {
-    height: 100%;
-    width: 100%;
-
-}
+#draw-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust to fit your layout */
+    width: 100vw; /* Adjust to fit your layout */
+    position: relative; /* Ensure it's a positioned parent */
+  }
+  
+  #draw-plane-container {
+    position: relative; /* Establish a stacking context */
+    width: 100%; /* Occupy full width of parent */
+    height: 100%; /* Occupy full height of parent */
+  }
+  
+  #draw-plane {
+    width: 100%; /* Occupy full width of parent */
+    height: 100%; /* Occupy full height of parent */
+  }
+  
+  #pattern-menu-container {
+    position: absolute; /* Position it absolutely */
+    bottom: 1%;
+    right: 1%;
+    z-index: 10; /* Ensure it's above other content */
+  }
+  

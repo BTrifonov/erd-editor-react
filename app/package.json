@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.16.0",
     "@svgdotjs/svg.draggable.js": "^3.0.4",
     "@svgdotjs/svg.js": "^3.2.4",
     "@types/node": "^20.14.10",

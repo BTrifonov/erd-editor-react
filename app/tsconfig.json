@@ -7,5 +7,9 @@
     {
       "path": "./tsconfig.node.json"
     }
+  ], 
+  "include": [
+    // other included files...
+    "path/to/svgdotjs-draggable.d.ts"
   ]
 }
