@@ -1,21 +1,25 @@
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { Svg, Mask } from '@svgdotjs/svg.js';
+import { Svg, Rect } from '@svgdotjs/svg.js';
 import createGridPattern from '../utils/gridPattern';
 import createDotPattern from '../utils/dotPattern';
-import React, { useRef } from 'react';
-import { Rect } from '@svgdotjs/svg.js';
 
-function PatternMenu({ drawPlane }: { drawPlane: Svg }) {
-  const rectMask = useRef<Rect | null>(null);
 
+/**TODO: Good practice to extract it in another file */
+interface PatternMenuProps {
+  drawPlane: Svg;
+  backgroundPattern: Rect | null;
+}
+
+function PatternMenu({ drawPlane, backgroundPattern }: PatternMenuProps) {
   /**
    * Create a blank mask for the draw plane
    */
   function handleNoPattern() {
-    if (rectMask.current) {
-        rectMask.current.unmask();
-        console.log("Removed pattern!");
+    if (backgroundPattern) {
+      backgroundPattern.fill('none');
+      console.log("Removed pattern!\n");
+      console.log(backgroundPattern);
     }
   }
 
@@ -23,38 +27,34 @@ function PatternMenu({ drawPlane }: { drawPlane: Svg }) {
    * Create a dot pattern for the draw plane
    */
   function handleDotPattern() {
-    if (rectMask.current) {
-        rectMask.current.unmask();
+    if (backgroundPattern) {
+      backgroundPattern.fill('none');
     }
 
-    const newMask = drawPlane.mask();
-    newMask.add(drawPlane.rect('100%', '100%').fill('#fff'));
-
     const dotPattern = createDotPattern(drawPlane);
-    dotPattern.maskWith(newMask);
+    if (backgroundPattern) {
+      backgroundPattern.fill(dotPattern);
+    }
 
-    rectMask.current = drawPlane.rect('100%', '100%').fill(dotPattern);
-
-    console.log('Changed to dot pattern!');
+    console.log('Changed to dot pattern!\n');
+    console.log(backgroundPattern);
   }
 
   /**
    * Create a grid pattern for the draw plane
    */
   function handleGridPattern() {
-    if (rectMask.current) {
-      rectMask.current.unmask();
+    if (backgroundPattern) {
+      backgroundPattern.fill('none');
     }
 
-    const newMask = drawPlane.mask();
-    newMask.add(drawPlane.rect('100%', '100%').fill('#fff'));
-
     const gridPattern = createGridPattern(drawPlane);
-    gridPattern.maskWith(newMask);
+    if (backgroundPattern) {
+      backgroundPattern.fill(gridPattern);
+    }
 
-    rectMask.current = drawPlane.rect('100%', '100%').fill(gridPattern);
-
-    console.log('Changed to grid pattern!');
+    console.log('Changed to grid pattern!\n');
+    console.log(backgroundPattern);
   }
 
   return (
