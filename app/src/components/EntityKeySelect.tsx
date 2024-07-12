@@ -23,7 +23,7 @@ export default function EntityKeySelect() {
 
   //sx={{ minWidth: 120 }}
   return (
-    <Box>
+    <Box bgcolor={'lightblue'}>
       <FormControl fullWidth>
         <InputLabel id="key-select-label">Key</InputLabel>
         <Select

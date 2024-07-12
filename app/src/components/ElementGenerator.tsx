@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Svg } from '@svgdotjs/svg.js';
 import '@svgdotjs/svg.draggable.js';
 import EntityKeySelect from './EntityKeySelect';
+import Entity from './Entity';
 
 interface ElementGeneratorProps {
   drawPlane: Svg;
@@ -15,7 +16,7 @@ function ElementGenerator({ drawPlane }: ElementGeneratorProps) {
     if (!containerRef.current) return;
 
     // Create the foreignObject
-    const foreignObject = drawPlane.foreignObject(250, 50).move(0, 0);
+    const foreignObject = drawPlane.foreignObject(200, 100).move(0, 0);
     const foreignObjectNode = foreignObject.node;
 
     // Store reference to the foreignObject
@@ -35,13 +36,11 @@ function ElementGenerator({ drawPlane }: ElementGeneratorProps) {
   }, [drawPlane]);
 
  
-
-
   return (
     <div
       ref={containerRef}
     >
-      <EntityKeySelect />
+      <Entity/>
     </div>
   );
 }
